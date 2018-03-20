@@ -7,11 +7,17 @@ const isDev = process.env.NODE_ENV === 'development'
 
 const config = {
   target: 'web',
+  //entry 入口
+  // __dirname代表当前根目录，下面语法是拼接完整路径
   entry: path.join(__dirname, 'src/index.js'),
+  // 输出
   output: {
     filename: 'bundle.[hash:8].js',
     path: path.join(__dirname, 'dist')
   },
+  // 添加其他的处理方法
+  // test 表示使用该文件类型（相当于正则）
+  // loader 是处理的方法
   module: {
     rules: [
       {
@@ -26,6 +32,10 @@ const config = {
         test: /\.(gif|jpg|jpeg|png|svg)$/,
         use: [
           {
+            // options是当前loader的配置
+            // url-loader将图片转化为base64
+            // limit如果图片小于1024转化为base64
+            // name 输出的文件名字，ext是后缀名
             loader: 'url-loader',
             options: {
               limit: 1024,
@@ -49,6 +59,9 @@ const config = {
 if (isDev) {
   config.module.rules.push({
     test: /\.styl/,
+    // use是执行多个操作时才会使用，执行方式是从下向上，一层一层的嵌套使用，达到自己想要的结果
+    // 比如：stylus-loader编译成css给css-loader处理，css-loader处理完在给style-loader处理
+    // style-loader会把css代码加到bundle.js中去
     use: [
       'style-loader',
       'css-loader',
