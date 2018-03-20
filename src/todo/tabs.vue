@@ -17,6 +17,7 @@
 
 <script>
 export default {
+  // 对传进来的数据进行声明
   props: {
     filter: {
       type: String,
@@ -32,6 +33,7 @@ export default {
       states: ['all', 'active', 'completed']
     }
   },
+  // 计算属性
   computed: {
     unFinishedTodoLength() {
       return this.todos.filter(todo => !todo.completed).length

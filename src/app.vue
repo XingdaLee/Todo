@@ -20,7 +20,7 @@ export default {
   }
 }
 </script>
-
+// scoped 只在这个组件内生效
 <style lang="stylus" scoped>
 #app{
   position absolute

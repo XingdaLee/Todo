@@ -1,7 +1,5 @@
 # 使用方法
-```
-git clone https://github.com/Jokcy/vue-todo-tech.git
-```
+
 进入项目目录，运行
 ```
 npm install
@@ -10,4 +8,7 @@ npm install
 ```
 npm run dev
 ```
-开始开发项目
+
+## 笔记
+
+cross-env包是用于设置环境变量使用
