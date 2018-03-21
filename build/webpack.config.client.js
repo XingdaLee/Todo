@@ -43,7 +43,7 @@ if (isDev) {
         // 比如：stylus-loader编译成css给css-loader处理，css-loader处理完在给style-loader处理
         // style-loader会把css代码加到bundle.js中去
         use: [
-          'style-loader',
+          'vue-style-loader',
           'css-loader',
           {
             loader: 'postcss-loader',
@@ -77,7 +77,8 @@ if (isDev) {
       rules: [{
         test: /\.styl/,
         use: ExtractPlugin.extract({
-          fallback: 'style-loader',
+          // fallback: 'style-loader',
+          fallback: 'vue-style-loader',
           use: [
             'css-loader',
             {

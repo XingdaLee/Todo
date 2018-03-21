@@ -1,5 +1,7 @@
 // 不同的webpack的配置文件中，共用的部分（开发、生产、服务端等都依赖这个配置）
 const path = require('path')
+const isDev = process.env.NODE_ENV === 'development'
+const createVueLoaderOptions = require('./vue-loader.config')
 const config = {
   // 编译目标是web平台
   target: 'web',
@@ -19,7 +21,8 @@ const config = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: createVueLoaderOptions(isDev)
       },
       {
         test: /\.jsx$/,
