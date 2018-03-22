@@ -22,7 +22,7 @@ const defaultPlugin = [
   // 是给webpack编译过程中判断环境，可以在开发js中引用到当前环境变量
   new webpack.DefinePlugin({
     'process.env': {
-      NODE_ENV: 'development'
+      NODE_ENV: '"development"'
     }
   }),
   new HTMLPlugin()
