@@ -14,7 +14,7 @@
     margin 20px
   }
 }
-</style>
+</style >
 
 // <docs>
 //   # 123 = 456
