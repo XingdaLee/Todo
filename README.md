@@ -54,7 +54,7 @@ husky: 安装后会自动在本地git中生成一个hooks,每次命令行中执�
 
 安装新的webpack配置: npm install webpack webpack-dev-server webpack-merge webpack-cli -D
 
-``
+```
 webpack-cli: webpack4之后，在命令行启动的脚本都在cli里,不然装了webpack不能在命令行中使用
 
 安装最新版本的webpack后，会提示很多其他的模块依赖的是2或者3版本，需要升级，只需要把这些模块卸载掉，重新安装即可
@@ -71,5 +71,5 @@ npm i extract-text-webpack-plugin@next -D
 
 npm i stylus-loader@3.0.2 vue-loader@14.1.1 -D
 
-``
+```
 
