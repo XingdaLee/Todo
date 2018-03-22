@@ -20,14 +20,14 @@ cross-env 包是用于设置环境变量使用
 
 "lint-fix": "eslint --fix --ext .js --ext .jsx --ext .vue client/"
 
-``
+```js
 
 --ext .js 指定检查的文件类型
 
 最后的参数client/ 指定文件夹
 
 --fix: 执行后会自动修复错误！！（牛逼）
-``
+```
 
 ### packages
 
@@ -37,10 +37,10 @@ rimraf 每次打包前删除dist目录
 
 eslint全家桶： npm i eslint eslint-config-standard eslint-plugin-standard eslint-plugin-promise eslint-plugin-import eslin t-plugin-node eslint-plugin-html -D
 
-``
+```js
 
 eslint-plugin-html: 识别vue文件里的javascript的插件
-``
+```
 
 eslint-loader: 在开发过程中直接使用eslint进行检查
 
