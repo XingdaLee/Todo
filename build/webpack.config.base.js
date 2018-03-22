@@ -13,12 +13,16 @@ const config = {
     filename: 'bundle.[hash:8].js',
     path: path.join(__dirname, '../dist')
   },
-  // 添加其他的处理方法
   // test 表示使用该文件类型（相当于正则）
   // loader 是处理的方法
-  // exclude忽略掉，不编译
   module: {
     rules: [
+      {
+        test: /\.(vue|js|jsx)$/, // 设置检查的文件类型
+        loader: 'eslint-loader',
+        exclude: "/node_modules", // exclude忽略掉，不编译
+        enforce: "pre" // 预处理参数，表示在test中的几种文件在其他loader加载之前，先使用eslint来检测
+      },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -31,7 +35,7 @@ const config = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/ // exclude忽略掉，不编译
       },
       {
         test: /\.(gif|jpg|jpeg|png|svg)$/,
