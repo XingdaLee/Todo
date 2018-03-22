@@ -65,7 +65,7 @@ if (isDev) {
     },
     plugins: defaultPlugin.concat([
       new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoEmitOnErrorsPlugin()
+      // new webpack.NoEmitOnErrorsPlugin() webpack4中已废弃
     ])
   })
 } else {
@@ -74,7 +74,7 @@ if (isDev) {
     // 拆分后可以充分的利用浏览器缓存框架代码，提高运行速度节省服务器流量
     entry: {
       app: path.join(__dirname, '../client/index.js'),
-      vendor: ['vue']
+      // vendor: ['vue'] webpack4中不需要在写
     },
     // chunkhash和hash的区别：hash是打包的时候，所有的js文件共用一个hash码，chunkhash则不会，不然每次打包浏览器缓存的框架代码就会被重新拉取
     output: {
@@ -100,17 +100,24 @@ if (isDev) {
         })
       }]
     },
+    optimization: {
+      splitChunks: {
+        chunks: 'all'
+      },
+      runtimeChunk: true
+    },
     plugins: defaultPlugin.concat([
-      new ExtractPlugin('styles.[contentHash:8].css'),
-      // 打包框架代码，放在runtime前面  
+      new ExtractPlugin('styles.[contentHash:8].css')
+      // webpack4已经废弃CommonsChunkPlugin
+      // 打包框架代码，放在runtime前面
       // vendor和上面定义的vendor是一样的
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor'
-      }),
-      // 把webpack生成在app.js里的webpack代码单独放在一个文件里，使用这个方法，当有新模块添加时，会在末尾追加，不会影响到hash，影响长缓存
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'runtime'
-      })
+      // new webpack.optimize.CommonsChunkPlugin({
+      //   name: 'vendor'
+      // }),
+      // // 把webpack生成在app.js里的webpack代码单独放在一个文件里，使用这个方法，当有新模块添加时，会在末尾追加，不会影响到hash，影响长缓存
+      // new webpack.optimize.CommonsChunkPlugin({
+      //   name: 'runtime'
+      // })
     ])
 
   })

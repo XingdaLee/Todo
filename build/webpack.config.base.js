@@ -3,6 +3,7 @@ const path = require('path')
 const isDev = process.env.NODE_ENV === 'development'
 const createVueLoaderOptions = require('./vue-loader.config')
 const config = {
+  mode: process.env.NODE_ENV || 'production', // mode是必加字段，否则报错。只接收两个值 development或者production
   // 编译目标是web平台
   target: 'web',
   //entry 入口
@@ -45,7 +46,7 @@ const config = {
             // url-loader将图片转化为base64
             // limit如果图片小于1024转化为base64
             // name 输出的文件名字，ext是后缀名
-            // 中括号中的变量都是url-loader中的变量 
+            // 中括号中的变量都是url-loader中的变量
             // hash:8 表示只要8位字符长度，ext是原本的扩展名
             loader: 'url-loader',
             options: {
