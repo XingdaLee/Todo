@@ -1,0 +1,16 @@
+# 规范编辑器的配置(编辑器默认执行)
+
+# 告诉编辑器，配置文件读到这一层就可以了，不需要在往其他地方寻找
+root = true
+# * 代表所有的文件
+[*]
+charset = utf-8
+end_of_line = lf
+# tab的长度是两个空格
+indent_size = 2
+# 推荐使用space而不是制表符
+indent_style = space
+# 保存文件的时候自动在末尾加上一行空行
+insert_final_newline = true
+# 写代码的时候自动去掉每一行后面的空格
+trim_trailing_whitespace = true
