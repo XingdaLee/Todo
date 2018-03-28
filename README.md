@@ -47,3 +47,36 @@ eslint-loader: 在开发过程中直接使用eslint进行检查
 babel-eslint: babel编译后的语法可能对eslint支持的不太友好，使用它来解决这个问题，需要在.eslintrc中设置parser
 
 husky: 安装后会自动在本地git中生成一个hooks,每次命令行中执行 git commit 时，它会自动读取本地的package.json中的precommit并执行相应的脚本（强制规范代码的风格协调）
+
+### 其他
+
+#### 生命周期
+
+```lifecycle\index.js
+
+  加入输出$el后的数据输出结果:
+
+  undefined "beforeCreate"
+
+  undefined "created"
+
+  <div id=​"root">​</div>​ "beforeMount"
+
+  <div>​aaa​</div>​ "mounted"
+```
+```javascript
+
+  beforeCreate () {
+    console.log(this.$el, 'beforeCreate')
+  },
+  created () {
+    console.log(this.$el, 'created')
+  },
+  beforeMount () {
+    console.log(this.$el, 'beforeMount')
+  },
+  mounted () {
+    console.log(this.$el, 'mounted')
+  }
+```
+
