@@ -25,7 +25,9 @@ const defaultPlugin = [
       NODE_ENV: '"development"'
     }
   }),
-  new HTMLPlugin()
+  new HTMLPlugin({
+    template: path.join(__dirname, 'template.html')
+  })
 ]
 
 let config
