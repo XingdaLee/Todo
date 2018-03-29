@@ -7,6 +7,8 @@
 // 数据绑定
 // import './data-binding'
 
-// computed
+// computed和watch
+// import './computed'
 
-import './computed'
+// vue原生指令
+import './directive'
