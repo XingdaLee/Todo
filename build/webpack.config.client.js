@@ -27,7 +27,9 @@ const defaultPlugin = [
       NODE_ENV: isDev ? '"development"' : '"production"'
     }
   }),
-  new HTMLPlugin()
+  new HTMLPlugin({
+    template: path.join(__dirname, 'template.html')
+  })
 ]
 
 let config
@@ -102,7 +104,7 @@ if (isDev) {
     },
     plugins: defaultPlugin.concat([
       new ExtractPlugin('styles.[contentHash:8].css'),
-      // 打包框架代码，放在runtime前面  
+      // 打包框架代码，放在runtime前面
       // vendor和上面定义的vendor是一样的
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor'
