@@ -12,8 +12,8 @@ export default () => {
     routes,
     mode: 'history', // 去掉url中的hash路由（#号）
     // base: '/base/' // base不是一个强制参数，只要是用vue-routerAPI跳转的url，都会在url上加个base的前缀
-    linkActiveClass: 'active-link', // 设置router-link点击激活的时的全局样式,参数可改
-    linkExactActiveClass: 'exact-active-link', // 设置router-link的时的全局样式
+    // linkActiveClass: 'active-link', // 设置router-link点击激活的时的全局样式,参数可改
+    // linkExactActiveClass: 'exact-active-link', // 设置router-link的时的全局样式
     // scrollBehavior页面跳转的时候，页面是否滚动（如果之前打开过页面，再次打开就滚动到该位置）
     scrollBehavior (to, from, savedPosition) {
       if (savedPosition) {
