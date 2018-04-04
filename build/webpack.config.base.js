@@ -12,6 +12,7 @@ const config = {
   output: {
     filename: 'bundle.[hash:8].js',
     path: path.join(__dirname, '../dist')
+    // publicPath: '/public/'  // 给url地址加前缀,启用后historyApiFallback前面也要加上/public
   },
   // test 表示使用该文件类型（相当于正则）
   // loader 是处理的方法
@@ -45,7 +46,7 @@ const config = {
             // url-loader将图片转化为base64
             // limit如果图片小于1024转化为base64
             // name 输出的文件名字，ext是后缀名
-            // 中括号中的变量都是url-loader中的变量 
+            // 中括号中的变量都是url-loader中的变量
             // hash:8 表示只要8位字符长度，ext是原本的扩展名
             loader: 'url-loader',
             options: {

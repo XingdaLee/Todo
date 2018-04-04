@@ -17,6 +17,11 @@ const devServerConfig = {
   overlay: {
     errors: true,
   },
+  // 如果不加historyApiFallback刷新页面后会404 因为浏览器会向服务端请求地址，服务端没有映射
+  // index.hrml就是new HTMLPlugin生成的根目录的位置
+  historyApiFallback: {
+    index: '/index.html'
+  },
   hot: true
 }
 // 如果不使用此插件，页面显示的只有目录结构。服务端渲染的时候不需要此插件
