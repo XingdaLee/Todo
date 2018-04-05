@@ -3,9 +3,11 @@
     <div id="cover"></div>
     <Header></Header>
     <!-- <todo></todo> -->
-    <router-link :to="{name: 'app'}">app</router-link>
+    <router-link to="/app/1234">app</router-link>
     <router-link to="/login">login</router-link>
-    <router-view />
+    <transition name="fade">
+      <router-view />
+    </transition>
     <Footer></Footer>
   </div>
 </template>
@@ -20,6 +22,10 @@ export default {
     Header,
     Footer,
     Todo
+  },
+  mounted () {
+    // 如果要查看类似于?a=222&b=333的参数，直接看打印的query（不需要定义）
+    console.log(this.$route)
   }
 }
 </script>
