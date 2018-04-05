@@ -20,7 +20,7 @@ const devServerConfig = {
   // 如果不加historyApiFallback刷新页面后会404 因为浏览器会向服务端请求地址，服务端没有映射
   // index.hrml就是new HTMLPlugin生成的根目录的位置
   historyApiFallback: {
-    index: '/index.html'
+    index: '/public/index.html'
   },
   hot: true
 }
