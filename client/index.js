@@ -1,8 +1,10 @@
 import Vue from 'vue'
+import Vuex from 'vuex'
 import App from './app.vue'
 import VueRouter from 'vue-router'
 import './assets/styles/global.styl'
 import createRouter from './config/router'
+import createStore from './store/store'
 
 // const root = document.createElement('div')
 // document.body.appendChild(root)
@@ -11,9 +13,12 @@ import createRouter from './config/router'
 //   render: (h) => h(App)
 // }).$mount(root)
 
-const router = createRouter()
 // 挂载vue-router
 Vue.use(VueRouter)
+Vue.use(Vuex)
+
+const router = createRouter()
+const store = createStore()
 // 全局导航守卫，每次路由跳转的时候都会触发这个些钩子
 // 应用场景(非常重要)：比如没有登录的用户不能看某些页面，权限设置
 // 执行顺序:beforeEach -> beforeResolve -> afterEach
@@ -45,5 +50,6 @@ router.afterEach((to, from) => {
 })
 new Vue({
   router,
+  store, // 使用store
   render: (h) => h(App)
 }).$mount('#root')

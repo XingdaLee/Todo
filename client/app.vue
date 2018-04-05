@@ -2,6 +2,7 @@
   <div id="app">
     <div id="cover"></div>
     <Header></Header>
+    <p>{{count}}</p>
     <!-- <todo></todo> -->
     <router-link to="/app/123">app</router-link>
     <!-- <router-link to="/app/456">app456</router-link> -->
@@ -26,7 +27,20 @@ export default {
   },
   mounted () {
     // 如果要查看类似于?a=222&b=333的参数，直接看打印的query（不需要定义）
-    console.log(this.$route)
+    // console.log(this.$route)
+    // 全局都可以使用 this.$store
+    // console.log(this.$store)
+    let i = 1
+    setInterval(() => {
+      // 通过调用mutations里updateCount方法来修改count的值
+      this.$store.commit('updateCount', i++)
+    }, 1000)
+  },
+  // 获取store里count的数据
+  computed: {
+    count () {
+      return this.$store.state.count
+    }
   }
 }
 </script>

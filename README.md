@@ -48,7 +48,16 @@ babel-eslint: babel编译后的语法可能对eslint支持的不太友好，使�
 
 husky: 安装后会自动在本地git中生成一个hooks,每次命令行中执行 git commit 时，它会自动读取本地的package.json中的precommit并执行相应的脚本（强制规范代码的风格协调）
 
+babel-plugin-syntax-dynamic-import: vue-router异步加载使用import必装
+
 ### 其他
+
+#### 简写
+
+// npm i XX -S ->dependencies
+
+// npm i XX -D ->devDependencies
+
 
 #### 生命周期
 
@@ -80,3 +89,12 @@ husky: 安装后会自动在本地git中生成一个hooks,每次命令行中执�
   }
 ```
 
+#### 报错分析
+
+1、4-5 添加vuex时报错
+
+```text
+Uncaught Error: [vuex] must call Vue.use(Vuex) before creating a store instance.
+```
+
+需要在store.js中使用vue.use(vuex)
