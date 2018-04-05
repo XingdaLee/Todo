@@ -3,6 +3,7 @@
     <div id="cover"></div>
     <Header></Header>
     <p>{{count}}</p>
+    <p>{{fullName}}</p>
     <!-- <todo></todo> -->
     <router-link to="/app/123">app</router-link>
     <!-- <router-link to="/app/456">app456</router-link> -->
@@ -15,6 +16,7 @@
 </template>
 
 <script>
+import {mapState, mapGetters} from 'vuex' // vuex提供调用state和getter的语法糖
 import Header from './layout/header.vue'
 import Footer from './layout/footer.jsx'
 // import Todo from './views/todo/todo.vue'
@@ -38,9 +40,37 @@ export default {
   },
   // 获取store里count的数据
   computed: {
-    count () {
-      return this.$store.state.count
-    }
+    // 语法糖的使用需要安装包babel-preset-stage-1 见readme
+
+    // 语法糖写法代替下面的传统写法(第1种)
+    // 调用的时候使用{{count}}
+    ...mapState(['count']),
+
+    // 语法糖写法代替下面的传统写法(第2种)
+    // 上面调用的时候使用{{hello}}
+    // ...mapState({
+    //   hello: 'count'
+    // }),
+
+    // 语法糖写法代替下面的传统写法(第3种)
+    // 上面调用的时候使用{{hello}}
+    // function方式，需要计算的时候可以使用
+    // ...mapState({
+    //   hello: (state) => state.count
+    // }),
+
+    // 调用store里state的传统写法
+    // count () {
+    //   return this.$store.state.count
+    // },
+
+    // get的语法糖使用方法
+    ...mapGetters(['fullName'])
+
+    // get的传统写法
+    // fullName () {
+    //   return this.$store.getters.fullName
+    // }
   }
 }
 </script>
