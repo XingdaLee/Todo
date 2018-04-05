@@ -19,6 +19,14 @@ Vue.use(Vuex)
 
 const router = createRouter()
 const store = createStore()
+
+// 动态的加载vuwx模块
+store.registerModule('c', {
+  state: {
+    text: 22222213
+  }
+})
+
 // 全局导航守卫，每次路由跳转的时候都会触发这个些钩子
 // 应用场景(非常重要)：比如没有登录的用户不能看某些页面，权限设置
 // 执行顺序:beforeEach -> beforeResolve -> afterEach

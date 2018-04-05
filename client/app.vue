@@ -4,6 +4,9 @@
     <Header></Header>
     <p>{{count}}</p>
     <p>{{fullName}}</p>
+    <p>{{textPlus}}</p>
+    <p>modules:{{textModules}}</p>
+    <p>textC:{{textC}}</p>
     <!-- <todo></todo> -->
     <router-link to="/app/123">app</router-link>
     <!-- <router-link to="/app/456">app456</router-link> -->
@@ -48,14 +51,14 @@ export default {
 
     // 使用mapMutations后
     // commit是触发mutations的语法
-    let i = 1
-    setInterval(() => {
-      // 通过调用mutations里updateCount方法来修改count的值
-      this.updateCount({
-        num: i++,
-        num2: 2
-      })
-    }, 1000)
+    // let i = 1
+    // setInterval(() => {
+    //   // 通过调用mutations里updateCount方法来修改count的值
+    //   this.updateCount({
+    //     num: i++,
+    //     num2: 2
+    //   })
+    // }, 1000)
 
     // 不使用...mapActions传统的dispatch是触发anction的方法
     // this.$store.dispatch('updateCountAsync', {
@@ -67,19 +70,34 @@ export default {
     // this.updateCountAsync({
     //   num: 5,
     //   time: 2000
-    // })
+    // })'
+    // this.updateText('1234')
+    this['a/updateText']('1234') // 模块中namespaced为true时的调用方法
+
+    this['a/add']()
+
+    this.testAction()
   },
   methods: {
     // mapActions和mapMutations是操作方法，所以写在这里
-    ...mapActions(['updateCountAsync']),
-    ...mapMutations(['updateCount'])
+    ...mapActions(['updateCountAsync', 'a/add', 'testAction']),
+    // ...mapMutations(['updateCount', 'updateText'])
+    ...mapMutations(['updateCount', 'a/updateText']) // 模块中namespaced为true时的调用方法
   },
   // 获取store里count的数据
   computed: {
+    // 模块化后调用方式1
+    // textModules () {
+    //   return this.$store.state.a.text
+    // },
+    // 模块化后调用方式2
+    ...mapState({
+      textModules: state => state.a.text,
+      textC: state => state.c.text // store.registerModule动态加载模块的数据，在index.js
+    }),
     // 语法糖的使用需要安装包babel-preset-stage-1 见readme
-
     // 语法糖写法代替下面的传统写法(第1种)
-    // 调用的时候使用{{count}}
+    // 页面调用的时候使用{{count}}
     ...mapState(['count']),
 
     // 语法糖写法代替下面的传统写法(第2种)
@@ -100,13 +118,20 @@ export default {
     //   return this.$store.state.count
     // },
 
-    // get的语法糖使用方法
-    ...mapGetters(['fullName'])
+    // getter的语法糖使用方法
+    // ...mapGetters(['fullName'])
 
-    // get的传统写法
+    // ggetter的传统写法
     // fullName () {
     //   return this.$store.getters.fullName
     // }
+
+    // 模块化后，有独立命名空间的getter的方法
+    // 优点是结构化
+    ...mapGetters({
+      'fullName': 'fullName',
+      'textPlus': 'a/textPlus'
+    })
   }
 }
 </script>
