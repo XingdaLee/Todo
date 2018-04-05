@@ -28,7 +28,31 @@ import Item from './item.vue'
 import Tabs from './tabs.vue'
 let id = 0
 export default {
-  props: ['id'], // 这个id是通过route传入
+  // 这里的所有路由钩子函数是不能直接拿到this的，需要在vm里使用
+  // 路由进入的时候
+  beforeRouteEnter: (to, from, next) => {
+    console.log('to do beforeRoute-Enter')
+    next(vm => {
+      console.log('this 就是 vm，id为：' + vm.id)
+    })
+  },
+  // update的触发条件是：当访问同一个路由，使用的是不同的url参数时
+  // 使用场景，比如根据不用的id获取不同的参数时候，可以节省使用watch的开销
+  beforeRouteUpdate: (to, from, next) => {
+    console.log('to do beforeRoute-Update')
+    next()
+  },
+  // 路由离开的时候
+  // 应用场景：比如用户在填写一个重大表单，点击离开的时候可以提醒
+  beforeRouteLeave: (to, from, next) => {
+    // if (global.confirm('are you sure ?')) {
+    //   next()
+    // }
+    console.log('to do beforeRoute-Leave')
+    next()
+  },
+  props: ['id'], // 这个id是通过routes.js中props为true时传入
+  // 在使用router后，对于访问url，同一个组件使用的不同参数，mounted只会触发一次，所以不能在这里进行根据不同的id获取不同的数据
   mounted () {
     console.log(this.id)
   },

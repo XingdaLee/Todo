@@ -3,26 +3,26 @@
     <div id="cover"></div>
     <Header></Header>
     <!-- <todo></todo> -->
-    <router-link to="/app/1234">app</router-link>
+    <router-link to="/app/123">app</router-link>
+    <!-- <router-link to="/app/456">app456</router-link> -->
     <router-link to="/login">login</router-link>
     <transition name="fade">
       <router-view />
     </transition>
     <Footer></Footer>
-    <router-view name="testRoute" />
   </div>
 </template>
 
 <script>
 import Header from './layout/header.vue'
 import Footer from './layout/footer.jsx'
-import Todo from './views/todo/todo.vue'
+// import Todo from './views/todo/todo.vue'
 // console.log(Header.__docs) // 双下划线，引用自定义的loader
 export default {
   components: {
     Header,
-    Footer,
-    Todo
+    Footer
+    // Todo
   },
   mounted () {
     // 如果要查看类似于?a=222&b=333的参数，直接看打印的query（不需要定义）
