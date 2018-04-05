@@ -9,7 +9,7 @@ const isDev = process.env.NODE_ENV === 'development'
 const config = {
   // 编译目标是web平台
   target: 'web',
-  //entry 入口
+  // entry 入口
   // __dirname代表当前根目录，下面语法是拼接完整路径
   entry: path.join(__dirname, 'src/index.js'),
   // 输出

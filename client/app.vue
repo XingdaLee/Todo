@@ -16,7 +16,12 @@
 </template>
 
 <script>
-import {mapState, mapGetters} from 'vuex' // vuex提供调用state和getter的语法糖
+import {
+  mapState,
+  mapGetters,
+  mapActions,
+  mapMutations
+} from 'vuex' // vuex提供调用state和getter等的语法糖
 import Header from './layout/header.vue'
 import Footer from './layout/footer.jsx'
 // import Todo from './views/todo/todo.vue'
@@ -32,11 +37,42 @@ export default {
     // console.log(this.$route)
     // 全局都可以使用 this.$store
     // console.log(this.$store)
+
+    // 不使用mapMutations时的传统写法
+    // let i = 1
+    // // commit是触发mutations的语法
+    // setInterval(() => {
+    //   // 通过调用mutations里updateCount方法来修改count的值
+    //   this.$store.commit('updateCount', i++)
+    // }, 1000)
+
+    // 使用mapMutations后
+    // commit是触发mutations的语法
     let i = 1
     setInterval(() => {
       // 通过调用mutations里updateCount方法来修改count的值
-      this.$store.commit('updateCount', i++)
+      this.updateCount({
+        num: i++,
+        num2: 2
+      })
     }, 1000)
+
+    // 不使用...mapActions传统的dispatch是触发anction的方法
+    // this.$store.dispatch('updateCountAsync', {
+    //   num: 5,
+    //   time: 2000
+    // })
+
+    // 使用...mapActions后
+    // this.updateCountAsync({
+    //   num: 5,
+    //   time: 2000
+    // })
+  },
+  methods: {
+    // mapActions和mapMutations是操作方法，所以写在这里
+    ...mapActions(['updateCountAsync']),
+    ...mapMutations(['updateCount'])
   },
   // 获取store里count的数据
   computed: {
