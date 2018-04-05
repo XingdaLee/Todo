@@ -17,7 +17,12 @@ export default [
     // props: (route) => ({
     //   id: route.query.b
     // }),
-    component: Todo,
+    // component: Todo, //单个路由的配置
+    components: {
+      // 双route-view的配置
+      default: Todo,
+      testRoute: Login
+    },
     name: 'app', // 给路由命名，可以在router-link中使用对象的方式来跳转
     meta: {
       title: 'this is app',

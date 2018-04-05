@@ -9,6 +9,7 @@
       <router-view />
     </transition>
     <Footer></Footer>
+    <router-view name="testRoute" />
   </div>
 </template>
 
