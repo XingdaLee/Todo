@@ -7,6 +7,7 @@ const baseConfig = require('./webpack.config.base')
 const ExtractPlugin = require('extract-text-webpack-plugin')
 // 判断语法
 const isDev = process.env.NODE_ENV === 'development'
+const VueClientPlugin = require('vue-server-renderer/client-plugin')
 // 设置host可以通过其他Ip可以访问到
 // errors 把错误显示在网页上
 // hot 热加载，只会渲染改动过的组件（需要设置HotModuleReplacementPlugin）
@@ -34,7 +35,9 @@ const defaultPlugin = [
   }),
   new HTMLPlugin({
     template: path.join(__dirname, 'template.html')
-  })
+  }),
+  // 会自动生成vue-ssr-client-manifest.json
+  new VueClientPlugin()
 ]
 
 let config

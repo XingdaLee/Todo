@@ -1,5 +1,5 @@
 {
-  "name": "vue-ssr-tech",
+  "name": "todo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,9 +15,13 @@
     "precommit": "npm run lint-fix",
     "practice": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.practice.js"
   },
-  "author": "",
+  "author": "xingdalee",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
+    "ejs": "^2.5.8",
+    "koa": "^2.5.0",
+    "koa-router": "^7.4.0",
     "vue": "2.5.13",
     "vue-router": "^3.0.1",
     "vue-server-renderer": "^2.5.16",
@@ -48,6 +52,7 @@
     "file-loader": "1.1.6",
     "html-webpack-plugin": "2.30.1",
     "husky": "^0.14.3",
+    "memory-fs": "^0.4.1",
     "postcss-loader": "2.0.9",
     "rimraf": "^2.6.2",
     "style-loader": "0.19.1",

@@ -54,6 +54,12 @@ babel-preset-stage-1 使用store时的语法``...mapState``等是未定稿的语
 
 vue-server-renderer: 服务端渲染必装
 
+Koa: node主流框架
+
+koa-router: 处理koa路由的工具
+
+axios: node端跨域请求的工具，浏览器端也可以用
+
 ### 其他
 
 #### 简写

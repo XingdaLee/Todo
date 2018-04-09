@@ -64,6 +64,10 @@ config = merge(baseConfig, {
     // 直接new就可以了，整体打包不会有javascript输出，输出的是json文件
     // 这个json文件可以通过vue-server-renderer这个包做很多服务端渲染的内容，帮复杂的逻辑包含在里面
     new VueServerPlugin()
+    // 也可以指定文件名
+    // new VueServerPlugin({
+    //   filename: 'vue-ssr-server-bundle.json'
+    // })
   ]
 })
 
