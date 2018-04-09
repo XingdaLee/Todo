@@ -52,6 +52,8 @@ babel-plugin-syntax-dynamic-import: vue-router异步加载使用import必装
 
 babel-preset-stage-1 使用store时的语法``...mapState``等是未定稿的语法，使用这个包可以使用很多未定稿的语法包括es8(需要在.babelrc文件中注册``stage-1``)
 
+vue-server-renderer: 服务端渲染必装
+
 ### 其他
 
 #### 简写
@@ -75,6 +77,7 @@ babel-preset-stage-1 使用store时的语法``...mapState``等是未定稿的语
 
   <div>​aaa​</div>​ "mounted"
 ```
+
 ```javascript
 
   beforeCreate () {
