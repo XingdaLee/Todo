@@ -1,5 +1,21 @@
 # 使用方法
 
+环境版本(must):
+
+``` text
+Node: v8.11.1
+
+npm: 3.10.10
+```
+
+vscode(Settings Sync):
+
+```text
+GitHub Token: a08a4707490b117ed39a71dc91d73e6bf3f213ea
+GitHub Gist: a020223b9c22fe8893c72e48030c124c
+GitHub Gist Type: Secret
+```
+
 进入项目目录，运行
 
 ``
@@ -109,3 +125,23 @@ Uncaught Error: [vuex] must call Vue.use(Vuex) before creating a store instance.
 ```
 
 需要在store.js中使用vue.use(vuex)
+
+2、5-3 访问localhost:3333
+
+``(0 , _createApp2.createApp) is not a function``
+
+client\server-entry.js 中引入 createApp 不应该加 {}，因为它本身就是function
+
+``no Component matched``
+
+client\config\routes.js 默认要找的是 /app，如果写成/app/:id 会找不到，改回/app
+
+``this.templateText.replace is not a function``
+
+设置下面字符集编码为utf-8
+
+```js
+const template = fs.readFileSync(
+    path.join(__dirname, '../server.template.ejs'),'utf-8'
+  )
+```

@@ -8,12 +8,13 @@
     "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.config.client.js",
     "build": "npm run clean && npm run build:client",
     "clean": "rimraf dist",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js",
+    "dev:client": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js",
     "lint": "eslint --ext .js --ext .jsx --ext .vue client/",
     "lint-fix": "eslint --fix --ext .js --ext .jsx --ext .vue client/",
     "lint-fix-pre": "eslint --fix --ext .js --ext .jsx --ext .vue practice/",
     "precommit": "npm run lint-fix",
-    "practice": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.practice.js"
+    "practice": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.practice.js",
+    "dev:server": "cross-env NODE_ENV=development node server/server.js"
   },
   "author": "xingdalee",
   "license": "ISC",
@@ -22,7 +23,7 @@
     "ejs": "^2.5.8",
     "koa": "^2.5.0",
     "koa-router": "^7.4.0",
-    "vue": "2.5.13",
+    "vue": "2.5.16",
     "vue-router": "^3.0.1",
     "vue-server-renderer": "^2.5.16",
     "vuex": "^3.0.1"
@@ -61,7 +62,7 @@
     "url-loader": "0.6.2",
     "vue-loader": "13.6.0",
     "vue-style-loader": "^4.1.0",
-    "vue-template-compiler": "2.5.13",
+    "vue-template-compiler": "2.5.16",
     "webpack": "3.10.0",
     "webpack-dev-server": "2.9.7",
     "webpack-merge": "^4.1.2"

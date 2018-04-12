@@ -9,7 +9,7 @@ const VueServerRenderer = require('vue-server-renderer')
 // 导入webpack的server的配置
 const serverConfig = require('../../build/webpack.config.server')
 const path = require('path')
-
+const serverRender = require('./server-render')
 // 在node环境中编译webpack
 // 通过webpack直接调用，serverCompiler可以直接在nodejs中去run或者watch得到一个在服务端渲染需要用到的bundle
 const serverCompiler =  webpack(serverConfig)
@@ -25,8 +25,8 @@ serverCompiler.watch({}, (err, stats) => {
   if (err) throw err
   // stats里的错误只要不是打包的错误，比如eslint的错误都会在stats中，不会出现在err中
   stats = stats.toJson()
-  stats.erros.forEach(err => console.log(err))
-  stats.hasWarnings.forEach(warn => console.warn(err))
+  stats.errors.forEach(err => console.log(err))
+  stats.warnings.forEach(warn => console.warn(err))
 
   // 错误信息处理完后，处理生成的bundle文件
   const bundlePath = path.join(
@@ -35,6 +35,7 @@ serverCompiler.watch({}, (err, stats) => {
   )
   // 指定字符集编码否则输出的是二进制文件，返回的是字符串所以要封装成json
   bundle = JSON.parse(mfs.readFileSync(bundlePath, 'utf-8'))
+  console.log('new bundle generated')
 })
 // koa的中间件，用来处理整个服务端渲染返回的东西，只需要在ctx.body上指定我们要返回的html
 const handleSSR = async (ctx) => {
@@ -47,14 +48,14 @@ const handleSSR = async (ctx) => {
   // 才能进行html的拼接，这样返回给浏览器的时候才能渲染，不然只是一个空的html
   // 不能同时起两个server，不能通过node代码用一个进程去获取另一个进程里的数据，可以通过axios发送请求去dev-server拿数据
   const clientManifestResp = await axios.get(
-    'http://127.0.0.1:8000/vue-ssr-client-manifest.json'
+    'http://127.0.0.1:8000/public/vue-ssr-client-manifest.json'
   )
   // clientManifestResp是个response对象，需要从data中拿到数据
   const clientManifest = clientManifestResp.data
   // 如果有bundle了,开始服务端渲染的过程,现在生成的文件没有html的头和标签，需要听歌ejs的模板进行组装后渲染
   // 1.先通过fs把模板读进来
   const template = fs.readFileSync(
-    path.join(__dirname, '../server.template.ejs')
+    path.join(__dirname, '../server.template.ejs'),'utf-8'
   )
   // 2.声明一个render.
   // createBundleRenderer可以帮我们创建一个我们可以直接调用render的一个function
@@ -66,5 +67,11 @@ const handleSSR = async (ctx) => {
     inject: false,
     clientManifest // 传入后会自动生成一个带script标签的js文件引用的字符串给填写到ejs里
   })
-
+  await serverRender(ctx, renderer, template)
 }
+
+const router = new Router()
+// 所有的请求都通过handleSSR处理
+router.get('*', handleSSR)
+
+module.exports = router

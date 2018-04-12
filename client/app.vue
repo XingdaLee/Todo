@@ -91,10 +91,10 @@ export default {
     //   return this.$store.state.a.text
     // },
     // 模块化后调用方式2
-    ...mapState({
-      textModules: state => state.a.text,
-      textC: state => state.c.text // store.registerModule动态加载模块的数据，在index.js
-    }),
+    // ...mapState({
+    //   textModules: state => state.a.text,
+    //   textC: state => state.c.text // store.registerModule动态加载模块的数据，在index.js
+    // }),
     // 语法糖的使用需要安装包babel-preset-stage-1 见readme
     // 语法糖写法代替下面的传统写法(第1种)
     // 页面调用的时候使用{{count}}

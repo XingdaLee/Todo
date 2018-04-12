@@ -7,7 +7,7 @@ export default [
   },
   {
     // path: '/app/:id',
-    path: '/app/:id',
+    path: '/app',
     props: true, // 如果props为true后，参数会作为一个组件的props参数传入Todo，不在需要通过this.$route来获取
     // 还可以自定义参数
     // props: {
