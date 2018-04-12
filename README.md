@@ -21,9 +21,15 @@ GitHub Gist Type: Secret
 ``
 npm install
 ``
-然后执行
+1、客户端渲染执行
 ``
-npm run dev
+npm run dev:client
+``
+
+2、服务端渲染另开窗口执行:
+
+``
+npm run dev:server
 ``
 
 ## 笔记
