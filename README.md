@@ -22,6 +22,8 @@ GitHub Gist Type: Secret
 npm install
 ``
 
+单独启动服务:
+
 1、客户端渲染执行
 
 ``
@@ -32,6 +34,12 @@ npm run dev:client
 
 ``
 npm run dev:server
+``
+
+一键启动服务:
+
+``
+npm run dev
 ``
 
 ## 笔记
@@ -89,6 +97,8 @@ koa-send: Koa帮助发送一些静态文件
 nodemon: 修改服务端代码后，帮助我们自动重启,需要配合nodemon.json
 
 concurrently: 在同一个命令行里，可以一次重启两个服务
+
+ vue-meta: 处理tiile和meta等元信息，SEO优化等(解决服务端渲染的时候，如何把这些信息插入进去)
 
 ### 其他
 

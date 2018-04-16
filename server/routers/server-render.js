@@ -12,12 +12,16 @@ const ejs = require('ejs')
   try {
     // 这个方法返回的是Promise可以用await来调用
     const appString = await renderer.renderToString(context)
+
+    // 不仅仅可以拿到title，具体看vue-meta的文档
+    const { title } = context.meta.inject()
     // 渲染html，{}中是渲染template需要用到的变量
     // appString、style和scripts等需要在server.template.ejs模板中定义
     const html = ejs.render(template, {
       appString: appString,
       style: context.renderStyles(), // 可以拿到带有style标签的整个字符串，不在需要自己写标签
-      scripts: context.renderScripts() // 可以拿到带有script标签的整个字符串
+      scripts: context.renderScripts(), // 可以拿到带有script标签的整个字符串
+      title: title.text()
     })
     // 返回给客户端完整的html页面
     ctx.body = html

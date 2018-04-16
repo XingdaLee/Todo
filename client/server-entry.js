@@ -20,6 +20,8 @@ export default context => {
       if (!matchedComponents.length) {
         return reject(new Error('no Component matched'))
       }
+      // 服务端渲染中vue-meta的用法
+      context.meta = app.$meta()
       resolve(app)
     })
   })

@@ -7,7 +7,7 @@ const config = {
   target: 'web',
   //entry 入口
   // __dirname代表当前根目录，下面语法是拼接完整路径
-  entry: path.join(__dirname, '../client/index.js'),
+  entry: path.join(__dirname, '../client/client-entry.js'),
   // 输出
   output: {
     filename: 'bundle.[hash:8].js',

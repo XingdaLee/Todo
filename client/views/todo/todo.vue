@@ -28,6 +28,9 @@ import Item from './item.vue'
 import Tabs from './tabs.vue'
 let id = 0
 export default {
+  metaInfo: {
+    title: 'The todo App'
+  },
   // 这里的所有路由钩子函数是不能直接拿到this的，需要在vm里使用
   // 路由进入的时候
   beforeRouteEnter: (to, from, next) => {

@@ -83,7 +83,7 @@ if (isDev) {
     // 业务代码和框架代码的拆分
     // 拆分后可以充分的利用浏览器缓存框架代码，提高运行速度节省服务器流量
     entry: {
-      app: path.join(__dirname, '../client/index.js'),
+      app: path.join(__dirname, '../client/client-entry.js'),
       vendor: ['vue']
     },
     // chunkhash和hash的区别：hash是打包的时候，所有的js文件共用一个hash码，chunkhash则不会，不然每次打包浏览器缓存的框架代码就会被重新拉取

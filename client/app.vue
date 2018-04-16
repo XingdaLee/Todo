@@ -30,6 +30,9 @@ import Footer from './layout/footer.jsx'
 // import Todo from './views/todo/todo.vue'
 // console.log(Header.__docs) // 双下划线，引用自定义的loader
 export default {
+  metaInfo: {
+    title: 'xingda\'s todo App'
+  },
   components: {
     Header,
     Footer
