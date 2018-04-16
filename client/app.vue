@@ -5,10 +5,10 @@
     <p>{{count}}</p>
     <p>{{fullName}}</p>
     <p>{{textPlus}}</p>
-    <p>modules:{{textModules}}</p>
-    <p>textC:{{textC}}</p>
+    <!-- <p>modules:{{textModules}}</p> -->
+    <!-- <p>textC:{{textC}}</p> -->
     <!-- <todo></todo> -->
-    <router-link to="/app/123">app</router-link>
+    <router-link to="/app">app</router-link>
     <!-- <router-link to="/app/456">app456</router-link> -->
     <router-link to="/login">login</router-link>
     <transition name="fade">

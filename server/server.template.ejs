@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <%- style %>
-</head>
-<body>
-  <%- appString %>
-</body>
-// ejs中-代表不需要去转义，如果要转义要用=
-<%- scripts %>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <%- style %>
+  </head>
+  <body>
+    <div id="root">
+      <%- appString %>
+    </div>
+    <%- scripts %>
+  </body>
 </html>

@@ -12,7 +12,8 @@ const config = {
   output: {
     filename: 'bundle.[hash:8].js',
     path: path.join(__dirname, '../dist'),
-    publicPath: '/public/'  // 给url地址加前缀,启用后historyApiFallback前面也要加上/public
+    //publicPath: '/public/'  // 给url地址加前缀,启用后historyApiFallback前面也要加上/public
+    publicPath: 'http://127.0.0.1:8000/public/'
   },
   // test 表示使用该文件类型（相当于正则）
   // loader 是处理的方法

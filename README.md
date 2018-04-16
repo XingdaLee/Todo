@@ -84,6 +84,12 @@ koa-router: 处理koa路由的工具
 
 axios: node端跨域请求的工具，浏览器端也可以用
 
+koa-send: Koa帮助发送一些静态文件
+
+nodemon: 修改服务端代码后，帮助我们自动重启,需要配合nodemon.json
+
+concurrently: 在同一个命令行里，可以一次重启两个服务
+
 ### 其他
 
 #### 简写
@@ -91,7 +97,6 @@ axios: node端跨域请求的工具，浏览器端也可以用
 // npm i XX -S ->dependencies
 
 // npm i XX -D ->devDependencies
-
 
 #### 生命周期
 

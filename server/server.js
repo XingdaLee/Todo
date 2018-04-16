@@ -1,8 +1,22 @@
 const Koa = require('koa')
 const app = new Koa()
+const send = require('koa-send')
+const path = require('path')
 // 服务端渲染分开发和正式环境
 const isDev = process.env.NODE_ENV === 'development'
 const pageRouter = require('./routers/dev-ssr')
+
+// 中间件
+// 因为是异步的，所以使用await
+app.use(async (ctx, next) => {
+  if (ctx.path === '/favicon.ico') {
+    // 发送内容和文件的路径，第三个参数是文件的查找的目录
+    await send(ctx, '/favicon.ico', { root: path.join(__dirname, '../') })
+  } else {
+    await next()
+  }
+})
+
 // Koa中间件来记录服务端的请求，抓取一些错误
 app.use(async (ctx, next) => {
   try {
