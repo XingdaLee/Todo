@@ -11,7 +11,7 @@ const config = {
   // 输出
   output: {
     filename: 'bundle.[hash:8].js',
-    path: path.join(__dirname, '../dist'),
+    path: path.join(__dirname, '../public'),
     //publicPath: '/public/'  // 给url地址加前缀,启用后historyApiFallback前面也要加上/public
     publicPath: 'http://127.0.0.1:8000/public/'
   },

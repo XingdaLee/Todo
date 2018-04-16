@@ -88,7 +88,8 @@ if (isDev) {
     },
     // chunkhash和hash的区别：hash是打包的时候，所有的js文件共用一个hash码，chunkhash则不会，不然每次打包浏览器缓存的框架代码就会被重新拉取
     output: {
-      filename: '[name].[chunkhash:8].js'
+      filename: '[name].[chunkhash:8].js',
+      publicPath: '/public/'
     },
     // postcss优化css，比如需要加css各个浏览器前缀
     module: {

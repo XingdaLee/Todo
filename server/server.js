@@ -4,8 +4,7 @@ const send = require('koa-send')
 const path = require('path')
 // 服务端渲染分开发和正式环境
 const isDev = process.env.NODE_ENV === 'development'
-const pageRouter = require('./routers/dev-ssr')
-
+const staticRouter = require('./routers/static')
 // 中间件
 // 因为是异步的，所以使用await
 app.use(async (ctx, next) => {
@@ -33,6 +32,15 @@ app.use(async (ctx, next) => {
     }
   }
 })
+
+app.use(staticRouter.routes()).use(staticRouter.allowedMethods())
+
+let pageRouter
+if (isDev) {
+  pageRouter = require('./routers/dev-ssr')
+} else {
+  pageRouter = require('./routers/ssr')
+}
 // koa的router的用法
 app.use(pageRouter.routes()).use(pageRouter.allowedMethods())
 

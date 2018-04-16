@@ -1,4 +1,5 @@
 node_modules
-dist
+public
 .vscode
 npm-debug.log
+server-build

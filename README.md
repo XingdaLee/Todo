@@ -42,6 +42,10 @@ npm run dev:server
 npm run dev
 ``
 
+3、生产环境:
+
+``npm run start``
+
 ## 笔记
 
 ### webpack
