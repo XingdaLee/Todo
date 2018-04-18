@@ -11,10 +11,14 @@ import createStore from './store/store'
 import createRouter from './config/router'
 
 import './assets/styles/global.styl'
+// 自定义组件
+import Notification from './components/notification'
 
 Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.use(Meta)
+// use后可以全局使用
+Vue.use(Notification)
 // 返回一个方法,每次调用这个方法都会返回一个新的Vue、createRouter对象等等
 // 每一次都必须创建一个新的app，不然会导致应用在node端造成内存溢出的情况
 export default () => {
