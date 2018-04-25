@@ -3,7 +3,7 @@
 const ejs = require('ejs')
 // ctx:把返回的html写到ctx的body里面
 // renderer:开发和正式的render流程不一样，需要外部传入，template也是一样的，需要外部传入
- module.exports = async(ctx, renderer, template) => {
+module.exports = async(ctx, renderer, template) => {
   ctx.header['contentType'] = 'text/html'
   // context传入vue-renderer中去，渲染完成后插入一堆属性，帮助我们渲染html，包括客户端的js、css路径，包括每个vue文件中的style
   // 还有用到的title等都可以通过context拿出来
@@ -29,4 +29,4 @@ const ejs = require('ejs')
     console.log('render error',error)
     throw error
   }
- }
+}

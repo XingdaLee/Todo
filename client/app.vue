@@ -14,7 +14,8 @@
     <transition name="fade">
       <router-view />
     </transition>
-    <notification content="test notify"/>>
+    <button @click="notify">click notify</button>
+    <!-- <notification content="test notify"/>> -->
     <Footer></Footer>
   </div>
 </template>
@@ -86,7 +87,13 @@ export default {
     // mapActions和mapMutations是操作方法，所以写在这里
     ...mapActions(['updateCountAsync', 'a/add', 'testAction']),
     // ...mapMutations(['updateCount', 'updateText'])
-    ...mapMutations(['updateCount', 'a/updateText']) // 模块中namespaced为true时的调用方法
+    ...mapMutations(['updateCount', 'a/updateText']), // 模块中namespaced为true时的调用方法
+    notify () {
+      this.$notify({
+        content: 'test $notify',
+        btn: 'close'
+      })
+    }
   },
   // 获取store里count的数据
   computed: {

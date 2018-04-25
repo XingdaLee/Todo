@@ -172,12 +172,3 @@ const template = fs.readFileSync(
     path.join(__dirname, '../server.template.ejs'),'utf-8'
   )
 ```
-<template>
-  <transition name="fade">
-    <div class="notification" :style="style">
-      <span class="content">{{content}}</span>
-      <a class="btn" @click="handleClose">{{btn}}</a>
-    </div>
-  </transition>
-</template>
-<script>
