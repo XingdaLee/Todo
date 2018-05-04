@@ -11,8 +11,8 @@ npm: 3.10.10
 vscode(Settings Sync):
 
 ```text
-GitHub Token: a08a4707490b117ed39a71dc91d73e6bf3f213ea
-GitHub Gist: a020223b9c22fe8893c72e48030c124c
+Personal access tokens: a09dc47a7f463a67362d498199070654999f9af1
+GitHub Gist Id: a020223b9c22fe8893c72e48030c124c
 GitHub Gist Type: Secret
 ```
 
