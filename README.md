@@ -8,11 +8,11 @@ Node: v8.11.1
 npm: 3.10.10
 ```
 
-vscode(Settings Sync):
+vscode(Syncing):
 
-```text
-Personal access tokens: a09dc47a7f463a67362d498199070654999f9af1
-GitHub Gist Id: a020223b9c22fe8893c72e48030c124c
+```Gist
+tokens: 6f74133ef8a92b0405c3f3763dc39e0d4986cfd4
+Id: a020223b9c22fe8893c72e48030c124c
 GitHub Gist Type: Secret
 ```
 
