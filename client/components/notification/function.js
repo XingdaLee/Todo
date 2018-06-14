@@ -16,9 +16,20 @@ const notify = (options) => {
   if (Vue.prototype.$isServer) {
     return
   }
+  const {
+    autoClose,
+    ...rest
+  } = options
   // 因为通过vue文件中this.$notify调用后，传进来的options是props，所以直接通过propsData传入数据
   const instance = new NotificationConstructor({
-    propsData: options
+    // propsData: options,
+    propsData: {
+      // 意思是所以的键值对都写在这里
+      ...rest
+    },
+    data: {
+      autoClose: autoClose === undefined ? 3000 : autoClose
+    }
   })
   // 每次生成新的id时候都加1
   const id = `notification_${seed++}`

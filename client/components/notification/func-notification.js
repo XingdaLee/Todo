@@ -13,10 +13,31 @@ export default {
       }
     }
   },
+  mounted () {
+    this.createTimer()
+  },
+  methods: {
+    createTimer () {
+      if (this.autoClose) {
+        this.timer = setTimeout(() => {
+          this.visible = false
+        }, this.autoClose)
+      }
+    },
+    clearTimer () {
+      if (this.timer) {
+        clearTimeout(this.timer)
+      }
+    }
+  },
+  beforeDestroy () {
+    this.clearTimer()
+  },
   data () {
     // 如果会用到的属性，提前声明一下
     return {
-      verticalOffset: 0
+      verticalOffset: 0,
+      autoClose: 3000
     }
   }
 }

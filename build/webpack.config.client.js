@@ -16,7 +16,11 @@ const devServerConfig = {
   port: 8000,
   host: '0.0.0.0',
   overlay: {
-    errors: true,
+    errors: true
+  },
+  headers: {
+    // 服务端开发时，修改js文件如果不加浏览器会认为是跨域，加上后允许跨域才能进行自动热更替
+    'Access-Control-Allow-Origin': '*'
   },
   // 如果不加historyApiFallback刷新页面后会404 因为浏览器会向服务端请求地址，服务端没有映射
   // index.hrml就是new HTMLPlugin生成的根目录的位置
@@ -66,7 +70,7 @@ if (isDev) {
           {
             loader: 'postcss-loader',
             options: {
-              sourceMap: true,
+              sourceMap: true
             }
           },
           'stylus-loader'
@@ -103,7 +107,7 @@ if (isDev) {
             {
               loader: 'postcss-loader',
               options: {
-                sourceMap: true,
+                sourceMap: true
               }
             },
             'stylus-loader'
