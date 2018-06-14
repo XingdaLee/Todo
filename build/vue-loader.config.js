@@ -9,10 +9,10 @@ module.exports = (isDev) => {
     cssModules: {
       // 使用cssmodules后，每个vue的className都会根据下面的path等参数生成独立的文件
       localIdentName: isDev ? '[path]-[name]-[hash:base64:5]' : '[hash:base64:5]',
-      camelcase: true //规定css使用驼峰形式抒写
+      camelcase: true // 规定css使用驼峰形式抒写
     }
     // hotReload: false // 热重载，自动根据环境变量生成，不需要设置
-    // loaders: { 
+    // loaders: {
     //   // 自定义loader，书写类似于vue中template、style的模块
     //   "docs": docsLoader
     // }

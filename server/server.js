@@ -28,7 +28,7 @@ app.use(async (ctx, next) => {
       // 往页面的body中写入错误信息
       ctx.body = err.message
     } else {
-      ctx.body = "please try again later"
+      ctx.body = 'please try again later'
     }
   }
 })

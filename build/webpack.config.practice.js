@@ -13,7 +13,7 @@ const devServerConfig = {
   port: 8080,
   host: '0.0.0.0',
   overlay: {
-    errors: true,
+    errors: true
   },
   hot: true
 }
@@ -62,7 +62,7 @@ config = merge(baseConfig, {
         {
           loader: 'postcss-loader',
           options: {
-            sourceMap: true,
+            sourceMap: true
           }
         },
         'stylus-loader'
